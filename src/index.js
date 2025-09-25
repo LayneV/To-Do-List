@@ -4,7 +4,6 @@ import { Project } from "./project";
 import todoImg from "./to-do-list.png";
 import { renderProjects, renderTodos } from "./ui";
 
-
 const img = document.createElement("img");
 img.src = todoImg;
 document.querySelector("header").appendChild(img);
@@ -19,11 +18,11 @@ function addNewProject(project) {
   todoList.push(project);
 }
 
-function findProject(projectName) {
+export function findProject(projectName) {
   const foundProject = todoList.find((p) => p.name === projectName);
 
   if (foundProject) {
-    console.log(foundProject);
+    return foundProject;
   } else {
     console.log("Project does not exist");
   }
@@ -41,3 +40,21 @@ let kitchen = createToDoItems(
 houseProjects.addTodo(kitchen);
 renderProjects();
 renderTodos(houseProjects);
+
+const newProjectForm = document.getElementById("new-project-form");
+
+newProjectForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const newProjectInput = document.getElementById("project-name-input");
+  const projectName = newProjectInput.value;
+
+  if (!projectName) {
+    return;
+  }
+
+  const newProject = new Project(projectName);
+  addNewProject(newProject);
+  renderProjects();
+  newProjectForm.reset();
+});

@@ -1,5 +1,4 @@
 import { getProjects, findProject } from ".";
-import { renderTodos } from './ui.js';
 
 export function renderProjects() {
     let todoList = getProjects();
