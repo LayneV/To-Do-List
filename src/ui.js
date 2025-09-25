@@ -1,4 +1,5 @@
-import { getProjects } from ".";
+import { getProjects, findProject } from ".";
+import { renderTodos } from './ui.js';
 
 export function renderProjects() {
     let todoList = getProjects();
@@ -8,11 +9,19 @@ export function renderProjects() {
   todoList.forEach((p) => {
       let projectCards = document.createElement("div");
       projectCards.textContent = (p.name);
+      projectCards.dataset.projectName = p.name;
+
       projectListDiv.appendChild(projectCards);
+
+      projectCards.addEventListener('click', (e) => {
+          const clickedProjectName = e.target.dataset.projectName;
+          const foundProject = findProject(clickedProjectName);
+          renderTodos(foundProject);
+      });
   });
 }
 
-export function renderTodos() {
+export function renderTodos(project) {
     const projectListDiv = document.getElementById("todo-display-area");
     projectListDiv.innerText = "";
     console.log(project);

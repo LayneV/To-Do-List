@@ -19,8 +19,8 @@ function addNewProject(project) {
   todoList.push(project);
 }
 
-function findProject(project) {
-  const foundProject = todoList.find((p) => p.name === project.name);
+function findProject(projectName) {
+  const foundProject = todoList.find((p) => p.name === projectName);
 
   if (foundProject) {
     console.log(foundProject);
