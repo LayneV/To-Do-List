@@ -1,11 +1,18 @@
 import "./styles.css";
 import { createToDoItems } from "./todo";
 import { Project } from "./project";
+import todoImg from "./to-do-list.png";
+import { renderProjects } from "./ui";
+
+
+const img = document.createElement("img");
+img.src = todoImg;
+document.querySelector("header").appendChild(img);
 
 let todoList = [];
 
 export function getProjects() {
-    return todoList;
+  return todoList;
 }
 
 function addNewProject(project) {
@@ -32,4 +39,4 @@ let kitchen = createToDoItems(
 );
 
 houseProjects.addTodo(kitchen);
-console.log(todoList[0]);
+renderProjects();
