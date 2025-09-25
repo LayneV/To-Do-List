@@ -3,6 +3,7 @@ import { createToDoItems } from "./todo";
 import { Project } from "./project";
 import todoImg from "./to-do-list.png";
 import { renderProjects, renderTodos } from "./ui";
+import { save } from "./storage";
 
 const img = document.createElement("img");
 img.src = todoImg;
@@ -18,7 +19,6 @@ export function setActiveProject(project) {
 export function getActiveProject() {
   return activeProject;
 }
-
 
 export function getProjects() {
   return todoList;
@@ -38,7 +38,6 @@ export function findProject(projectName) {
   }
 }
 
-
 let houseProjects = new Project("House Chores");
 addNewProject(houseProjects);
 let kitchen = createToDoItems(
@@ -54,7 +53,6 @@ renderProjects();
 renderTodos(houseProjects);
 createNewProject();
 addTodoForm();
-
 
 function createNewProject() {
   const newProjectForm = document.getElementById("new-project-form");
@@ -77,10 +75,10 @@ function createNewProject() {
 }
 
 function addTodoForm() {
-  const dialog = document.getElementById('todo-dialog');
-  const openDialogBtn = document.getElementById('open-dialog');
-  const cancelBtn = document.getElementById('cancelBtn');
-  const newTodoForm = document.getElementById('new-todo-form');
+  const dialog = document.getElementById("todo-dialog");
+  const openDialogBtn = document.getElementById("open-dialog");
+  const cancelBtn = document.getElementById("cancelBtn");
+  const newTodoForm = document.getElementById("new-todo-form");
 
   openDialogBtn.addEventListener("click", () => {
     dialog.showModal();
@@ -105,7 +103,5 @@ function addTodoForm() {
     renderTodos(currentProject);
     newTodoForm.reset();
     dialog.close();
-
   });
-
 }
