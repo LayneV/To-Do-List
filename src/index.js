@@ -2,7 +2,7 @@ import "./styles.css";
 import { createToDoItems } from "./todo";
 import { Project } from "./project";
 import todoImg from "./to-do-list.png";
-import { renderProjects } from "./ui";
+import { renderProjects, renderTodos } from "./ui";
 
 
 const img = document.createElement("img");
@@ -40,3 +40,4 @@ let kitchen = createToDoItems(
 
 houseProjects.addTodo(kitchen);
 renderProjects();
+renderTodos(houseProjects);

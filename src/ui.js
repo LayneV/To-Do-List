@@ -11,3 +11,15 @@ export function renderProjects() {
       projectListDiv.appendChild(projectCards);
   });
 }
+
+export function renderTodos() {
+    const projectListDiv = document.getElementById("todo-display-area");
+    projectListDiv.innerText = "";
+    console.log(project);
+
+    project.listOfToDoItems.forEach((p) => {
+      let toDoList = document.createElement("div");
+      toDoList.innerText = p.title;
+      projectListDiv.appendChild(toDoList);
+    });
+}
