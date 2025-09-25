@@ -30,6 +30,7 @@ module.exports = {
     hot: true,
     open: true,
     port: 3000,
+    watchFiles: ["src/**/*"], 
   },
   mode: "development",
 };
